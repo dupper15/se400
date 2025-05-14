@@ -24,8 +24,10 @@ test("Login fails with empty credentials", async ({ page }) => {
 
 test("Login fails with incorrect credentials", async ({ page }) => {
   await page.goto("http://localhost:5173/login");
-  await ai('Enter "wrong@gmail.com" into the email field', { page, test });
-  await ai('Enter "wrongpassword" into the password field', { page, test });
+  await ai(
+    'Enter "wrong@gmail.com" into the email field and "wrongpassword" into the password field',
+    { page, test }
+  );
   await ai("Click on the login button", { page, test });
   await expect(page).toHaveURL("http://localhost:5173/login");
 });
